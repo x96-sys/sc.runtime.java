@@ -10,10 +10,10 @@ SRC_TEST      = src/test
 LIB_DIR        = lib
 TOOLS_DIR      = tools
 
-CS_RUNTIME_VERSION = 1.0.0
+CS_RUNTIME_VERSION = 1.0.2
 CS_RUNTIME_BIN     = $(LIB_DIR)/org.x96.sys.cs-deps.jar
 CS_RUNTIME_URL     = https://github.com/x96-sys/cs.runtime.java/releases/download/v$(CS_RUNTIME_VERSION)/org.x96.sys.cs-deps.jar
-CS_RUNTIME_SHA256  = 338890d27190e6031ecf5d00c63fb24b383d8f18128f4a6df9d2c6e53f7eb61e
+CS_RUNTIME_SHA256  = 737cb08c1b6fa3768380bfe2db36bf3dc57e87d2e7e5d63e6cbd36d46ae2d150
 
 JAVA_SOURCES := $(shell find $(SRC_MAIN) -name "*.java")
 
@@ -52,9 +52,9 @@ build:
 	@javac -d $(MAIN_BUILD) -cp $(CP) $(JAVA_SOURCES)
 	@echo "[🦿] [compiled] [$(MAIN_BUILD)]"
 
-run:
+run: build
 	@echo "[☕️] [running] [`java --version`]"
-	@java -cp $(MAIN_BUILD):$(CP) RunTime $(ARGS)
+	@java -cp $(MAIN_BUILD):$(CP) FlyTime $(ARGS)
 
 libs: $(LIB_DIR)/cs_runtime
 

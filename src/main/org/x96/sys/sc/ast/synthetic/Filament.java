@@ -1,0 +1,12 @@
+package org.x96.sys.sc.ast.synthetic;
+
+public record Filament(Primor[] primor) implements Nectar {
+    @Override
+    public void prettyPrint(String indent) {
+        System.out.printf("%s%s [%d]%n", indent, label(), primor.length);
+        String child = " ".repeat(4) + indent;
+        for (Primor p : primor) {
+            p.prettyPrint(child);
+        }
+    }
+}
