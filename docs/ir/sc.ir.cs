@@ -1,5 +1,6 @@
-id   = byte[]:raw;
-text = byte[]:raw;
+id    = byte[]:raw;
+text  = byte[]:raw;
+nb16  = int:raw;
 
 bee      = id pulse[];
 rune     = id;
@@ -31,7 +32,7 @@ serie = id[];
 
 neuron = id;
 
-signal = (serie | impulse | text | id | schema);
+signal = (serie | impulse | text | id | schema | nb16);
 
 activity = signal[];
 

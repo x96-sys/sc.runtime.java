@@ -10,7 +10,7 @@
   ;
   :ethics fly{code: Hex} 0x0
     sys.fly(template, args)
-    flow 0x0
+    flow(0x0)
   ;
 ;
 

@@ -1,5 +1,6 @@
 primor = byte[]:raw;
 echo   = byte[]:raw;
+hex    = int:raw
 
 bug    = primor ethics[];
 totem  = primor;
@@ -31,7 +32,7 @@ filament = primor[];
 
 forager = primor;
 
-nectar  = (filament | fly | echo | primor | signature );
+nectar  = (filament | fly | echo | primor | signature | hex);
 
 brood = nectar[];
 
