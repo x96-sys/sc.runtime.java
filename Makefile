@@ -52,7 +52,11 @@ build:
 	@javac -d $(MAIN_BUILD) -cp $(CP) $(JAVA_SOURCES)
 	@echo "[🦿] [compiled] [$(MAIN_BUILD)]"
 
-run: build
+cs:
+	@echo "[cs] [run] [$(CS_RUNTIME_VERSION)]"
+	@java -jar $(CP) $(ARGS)
+
+sc:
 	@echo "[☕️] [running] [`java --version`]"
 	@java -cp $(MAIN_BUILD):$(CP) FlyTime $(ARGS)
 

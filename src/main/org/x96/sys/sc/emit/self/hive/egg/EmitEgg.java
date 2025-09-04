@@ -13,8 +13,11 @@ public class EmitEgg extends Emit<Egg> {
     @Override
     public String toSC() {
         StringBuilder sb = new StringBuilder();
-        for (Network n: t.network()) {
-            sb.append(new EmitNetwork(n).toSC());
+        for (int i = 0; i < t.network().length; i++) {
+            sb.append(new EmitNetwork(t.network()[i]).toSC());
+            if (i < t.network().length - 1) {
+                sb.append("\n");
+            }
         }
         return sb.toString();
     }
