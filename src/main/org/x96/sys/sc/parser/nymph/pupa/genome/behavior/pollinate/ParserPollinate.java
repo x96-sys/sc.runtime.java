@@ -23,7 +23,7 @@ public class ParserPollinate extends Parser<Pollinate> {
         consume("pollinate"); // [=]
         skipI();
         Optional<Nectar> nectar = new ParserOptionalNectar(tape).parse();
-        skipI();
+        consume("fini_pollinate");
         if (nectar.isPresent()) {
             if (nectar.get() instanceof Signature) {
                 skipPS();

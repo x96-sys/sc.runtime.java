@@ -59,8 +59,8 @@ bug_anatomy = ':' i* ethics i* ';';
 
 flower = @ ('@' | '%') i*;
 
-pollinate = flower primor i* '=' i* (filament | fly | echo | primor_literal | ps) i*;
-ps = signature i* ';';
+pollinate      = flower primor i* '=' i* (filament | fly | echo | primor_literal | signature) fini_pollinate;
+fini_pollinate = @ ( i | ';');
 
 norte = primor;
 norte_follow = i* norte?;
