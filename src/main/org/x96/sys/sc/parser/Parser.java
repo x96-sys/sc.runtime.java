@@ -70,11 +70,11 @@ public abstract class Parser<T> extends org.x96.sys.parser.Parser implements Par
     }
 
     public boolean hasNextFly() {
-        if (hasNextPrimor()) {
-            return true;
-        }
+        return hasNextPrimor() || hasNextSelf();
+    }
 
-        return false;
+    public boolean hasNextSelf() {
+        return hasNext("self");
     }
 
     public boolean hasNextResonance() {

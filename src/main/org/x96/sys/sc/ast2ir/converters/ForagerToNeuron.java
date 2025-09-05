@@ -7,6 +7,6 @@ import org.x96.sys.sc.ir.synthetic.Neuron;
 public class ForagerToNeuron implements ToIr<Forager, Neuron> {
     @Override
     public Neuron convert(Forager forager) {
-        return new Neuron(new PrimorToId().convert(forager.primor()));
+        return new Neuron(forager.self(), new PrimorToId().convert(forager.primor()));
     }
 }

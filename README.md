@@ -9,6 +9,8 @@ O `kernel` oferece o `bake`, capaz de especificar tudo o que pode ser declarado
 O `kernel` oferece o `eco`, capaz de imprimir a declaração do estado
 especificado
 
+Amigável a recursividade
+
 #### Tokenize Grammar
 
 Defining SC Grammar on CS DSL

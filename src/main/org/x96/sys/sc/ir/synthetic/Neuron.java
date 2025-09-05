@@ -1,6 +1,6 @@
 package org.x96.sys.sc.ir.synthetic;
 
-public record Neuron(Id id) implements ScIr {
+public record Neuron(boolean self, Id id) implements ScIr {
     @Override
     public void prettyPrint(String indent) {
         System.out.printf("%s%s%n", indent, label());
