@@ -35,11 +35,11 @@ primor_follow  = ( alpha | digit | ghost );
 primor         = @ alpha primor_follow*;
 primor_literal = ':' primor;
 
-bug_content = bcf+;
-bcf         = bug_anatomy i*;
+bug_follow     = bug_anatomy i*;
+totem_follow   = (norte | bug_anatomy) i*;
 
-bug    = 'b' 'ug' i* primor i* bug_content?;
-totem  = 't' 'otem' i* primor i* norte_follow*;
+bug    = 'b' 'ug' i* primor i* bug_follow*;
+totem  = 't' 'otem' i* primor i* totem_follow*;
 logos  = 'l' 'ogos' i* primor;
 know   = 'k' 'now' i* primor;
 ethics = 'e' 'thics' i* primor i* signature i* manifest*;
@@ -47,7 +47,7 @@ ethics = 'e' 'thics' i* primor i* signature i* manifest*;
 manifest = behavior i*;
 
 signature = sigin i* resonance?;
-sigin     = init_signature pairs? fini_signature;
+sigin     = init_signature i* pairs? i* fini_signature;
 resonance = (primor | void);
 void      = @ '0' ('x' | 'X') '0';
 
@@ -65,19 +65,20 @@ array    = '[' ']';
 optional = '?';
 
 anatomy     = init_anatomy i* (bug | totem | logos | know | ethics) i* fini_anatomy;
-bug_anatomy = ':' i* ethics i* ';';
+bug_anatomy = init_anatomy i* ethics i* fini_anatomy;
 
 flower = @ ('@' | '%') i*;
 
-pollinate      = flower primor i* '=' i* nectar fini_pollinate;
-fini_pollinate = @ ( i | ';');
+pollinate      = flower primor i* '=' i* nectar i* fini_pollinate;
+fini_pollinate = ';';
 
 norte = primor;
 norte_follow = i* norte?;
 
 filament = '&' 'p' '[' norte_follow+ ']';
 
-forager = primor;
+self = '$';
+forager = (primor | self);
 
 word = !q any;
 echo = @ q word+ q;
@@ -86,7 +87,12 @@ fini_doc   = @ nl;
 doc        = @ hash doc_follow* fini_doc;
 doc_follow = !fini_doc any*;
 
-nectar        = (filament | fly | echo | primor_literal | signature | hex);
+init_array = '[';
+fini_array = ']';
+
+nectar_array  = init_array i* brood fini_array;
+
+nectar        = (filament | fly | echo | primor_literal | signature | hex | nectar_array);
 nectar_follow = ',' i* nectar i*;
 
 brood = nectar i* nectar_follow*;

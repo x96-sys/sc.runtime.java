@@ -19,6 +19,10 @@ public class ParserAnatomy extends Parser<Anatomy> {
             anatomy = new ParserTotem(tape).parse();
             skipI();
         }
+        if (hasNext("bug")) {
+            // anatomy = new ParserBug(tape).parse();
+            // skipI();
+        }
         consume("fini_anatomy");
         skipI();
         return anatomy;

@@ -16,6 +16,7 @@ public class ParserPupa extends Parser<Pupa> {
 
     @Override
     public Pupa parse() {
+        skipI();
         List<Genome> genome = new ArrayList<>();
         followGenome(genome);
         return new Pupa(genome.toArray(Genome[]::new));

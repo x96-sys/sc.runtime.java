@@ -1,7 +1,7 @@
 
-@template = '%s, %s!'
-@hello    = 'hello'
-@world    = 'world'
+@template = '%s, %s!';
+@hello    = 'hello';
+@world    = 'world';
 
 :bug kernel
   :ethics wf{template: Echo, args: []Echo } 0x0
@@ -18,19 +18,16 @@
   :ethics wf{template: Echo, *args: []Echo} n32
     flow $.printf(template, args)
   ;
-  :ethics fly(Hex code) 0x0
+  :ethics fly{code: Hex} 0x0
     $.exit(code)
   ;
 ;
 
-
-kernel.wf(template, [hello, word])
-
 :totem kind
-  unknow,
-  soh,
-  null,
-  stx,
+  unknow
+  soh
+  null
+  stx
   etx
 
   :ethics is{:Hex} $
@@ -57,3 +54,6 @@ kernel.wf(template, [hello, word])
     hex.gt(0x3)
   ;
 ;
+
+
+kernel.wf(template, [hello, word])

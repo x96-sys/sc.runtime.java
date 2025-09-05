@@ -15,6 +15,13 @@ public abstract class Parser<T> extends org.x96.sys.parser.Parser implements Par
         }
     }
 
+    public void skip(String s) {
+        if (hasNext(s)) {
+            consume(s);
+            skip(s);
+        }
+    }
+
     public void skipI() {
         if (hasNext("i")) {
             consume("i");

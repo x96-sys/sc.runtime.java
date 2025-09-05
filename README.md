@@ -52,5 +52,9 @@ m sc ARGS="parse /Users/fera/dev/pd/eng/sc/docs/artifacts/sc/sc3.sc"
 ```
 
 ```bash
+m sc ARGS="parse /Users/fera/dev/pd/eng/sc/docs/artifacts/sc/sc4.sc"
+```
+
+```bash
 m sc ARGS="parse /Users/fera/dev/pd/eng/sc/docs/artifacts/sc/sc9.sc"
 ```

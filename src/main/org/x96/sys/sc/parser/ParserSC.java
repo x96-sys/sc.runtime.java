@@ -15,6 +15,7 @@ public class ParserSC extends Parser<Sc> {
     public Sc parse() {
         consume("stx");
         Nymph nymph = new ParserNymph(tape).parse();
+        System.out.println(tape.current());
         consume("etx");
         return new Sc(nymph);
     }
