@@ -40,10 +40,7 @@ public abstract class Parser<T> extends org.x96.sys.parser.Parser implements Par
     }
 
     public boolean hasNextBrood() {
-        if (hasNextPrimorLiteral()) {
-            return true;
-        }
-        return false;
+        return  hasNextPrimorLiteral() || hasNextHex();
     }
 
     public boolean hasNextPrimorLiteral() {
@@ -56,6 +53,10 @@ public abstract class Parser<T> extends org.x96.sys.parser.Parser implements Par
 
     public boolean hasNextCarrier() {
         return hasNext("init_carrier");
+    }
+
+    public boolean hasNextHex() {
+        return hasNext("hex");
     }
 
     public boolean hasNextCourse() {
@@ -155,7 +156,8 @@ public abstract class Parser<T> extends org.x96.sys.parser.Parser implements Par
                 || hasNextSignature()
                 || hasNextPrimorLiteral()
                 || hasNextFly()
-                || hasNextFilament();
+                || hasNextFilament()
+                || hasNextHex();
     }
 
     public boolean hasNextSignature() {

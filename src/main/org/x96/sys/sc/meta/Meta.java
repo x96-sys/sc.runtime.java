@@ -37,6 +37,9 @@ public class Meta {
             throw new RuntimeException("print bake usage: kernel.bake(:primor, :bee)");
         }
         switch (args[0]) {
+            case Hex hex -> {
+                throw new RuntimeException("print bake usage: kernel.bake(:primor, :bee)");
+            }
             case Echo echo -> {
                 throw new RuntimeException("print bake usage: kernel.bake(:primor, :bee)");
             }

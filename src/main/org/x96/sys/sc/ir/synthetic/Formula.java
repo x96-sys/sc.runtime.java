@@ -12,6 +12,6 @@ public enum Formula implements ScIr {
 
     @Override
     public void prettyPrint(String indent) {
-        System.out.printf("%s%s [%s]%n", indent, label(), h());
+        System.out.printf("%s%s > %s%n", indent, label(), h());
     }
 }

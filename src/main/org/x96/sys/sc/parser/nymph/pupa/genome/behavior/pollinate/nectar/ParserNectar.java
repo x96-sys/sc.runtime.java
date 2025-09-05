@@ -7,6 +7,7 @@ import org.x96.sys.sc.parser.Parser;
 import org.x96.sys.sc.parser.nymph.pupa.genome.behavior.fly.ParserFly;
 import org.x96.sys.sc.parser.nymph.pupa.genome.behavior.pollinate.nectar.echo.ParseEcho;
 import org.x96.sys.sc.parser.nymph.pupa.genome.behavior.pollinate.nectar.filament.ParserFilament;
+import org.x96.sys.sc.parser.nymph.pupa.genome.behavior.pollinate.nectar.hex.ParserHex;
 import org.x96.sys.sc.parser.nymph.pupa.genome.behavior.pollinate.nectar.signature.ParserSignature;
 import org.x96.sys.sc.parser.nymph.pupa.genome.behavior.pollinate.primor.ParserPrimor;
 
@@ -37,6 +38,10 @@ public class ParserNectar extends Parser<Nectar> {
 
             if (hasNextFilament()){
                 return new ParserFilament(tape).parse();
+            }
+
+            if (hasNextHex()){
+                return new ParserHex(tape).parse();
             }
 
             System.out.println(tape.current().toString());

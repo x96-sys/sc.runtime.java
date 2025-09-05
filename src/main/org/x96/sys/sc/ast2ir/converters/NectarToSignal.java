@@ -13,6 +13,7 @@ public class NectarToSignal implements ToIr<Nectar, Signal> {
             case Fly fly -> new FlyToImpulse().convert(fly);
             case Primor primor -> new PrimorToId().convert(primor);
             case Signature signature -> new SignatureToSchema().convert(signature);
+            case Hex hex -> new HexToNb16().convert(hex);
         };
     }
 }

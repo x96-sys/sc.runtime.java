@@ -2,6 +2,7 @@ package org.x96.sys.sc.emit.self.hive.egg.network.stimulus.hipocampos.signal;
 
 import org.x96.sys.sc.emit.arch.Emit;
 import org.x96.sys.sc.emit.self.hive.egg.network.stimulus.hipocampos.id.EmitId;
+import org.x96.sys.sc.emit.self.hive.egg.network.stimulus.hipocampos.signal.nb16.EmitNb16;
 import org.x96.sys.sc.emit.self.hive.egg.network.stimulus.hipocampos.signal.schema.EmitSchema;
 import org.x96.sys.sc.emit.self.hive.egg.network.stimulus.hipocampos.signal.serie.EmitSerie;
 import org.x96.sys.sc.emit.self.hive.egg.network.stimulus.hipocampos.signal.text.EmitText;
@@ -16,6 +17,7 @@ public class EmitSignal extends Emit<Signal> {
     @Override
     public String toSC() {
         return switch (t){
+            case Nb16 nb16 -> new EmitNb16(nb16).toSC();
             case Id id -> new EmitId(id).toSC();
             case Impulse impulse -> new EmitImpulse(impulse).toSC();
             case Schema schema -> new EmitSchema(schema).toSC();

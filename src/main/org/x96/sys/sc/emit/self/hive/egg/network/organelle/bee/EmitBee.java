@@ -19,6 +19,7 @@ public class EmitBee extends Emit<Bee> {
         for (Pulse p: t.pulses()) {
             sb.append(String.format("%s%s%n", indent, new EmitPulse(p).toSC()));
         }
-        return super.toSC();
+        sb.append(";\n");
+        return sb.toString();
     }
 }
