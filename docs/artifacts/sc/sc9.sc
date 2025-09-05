@@ -1,27 +1,29 @@
-
 @template = '%s, %s!';
 @hello    = 'hello';
 @world    = 'world';
 
 :bug kernel
   :ethics wf{template: Echo, args: []Echo } 0x0
-    sys.wf(template, args)
-    flow # void
+    flow(0x0)
   ;
-  :ethics fly{code: Hex} 0x0
-    sys.fly(template, args)
+
+  :ethics wf{template: Echo, args: []Echo } 0x0
+    sys.wf(template, args)
+    sys.wf(template, args)
+    sys.wf(template, args)
     flow(0x0)
   ;
 ;
 
 :bug sys
   :ethics wf{template: Echo, *args: []Echo} n32
-    flow $.printf(template, args)
+    flow($.printf(template, args))
   ;
   :ethics fly{code: Hex} 0x0
     $.exit(code)
   ;
 ;
+
 
 :totem kind
   unknow
@@ -31,11 +33,11 @@
   etx
 
   :ethics is{:Hex} $
-    flow unknow if isUnknow(hex)
-    flow null if isNull(hex)
-    flow soh if isSoh(hex)
-    flow stx if isStx(hex)
-    flow etx if isEtx(hex)
+    flow(unknow) if isUnknow(hex)
+    flow(null) if isNull(hex)
+    flow(soh) if isSoh(hex)
+    flow(stx) if isStx(hex)
+    flow(etx) if isEtx(hex)
   ;
 
   :ethics isNull{:Hex} bool
@@ -54,6 +56,3 @@
     hex.gt(0x3)
   ;
 ;
-
-
-kernel.wf(template, [hello, word])

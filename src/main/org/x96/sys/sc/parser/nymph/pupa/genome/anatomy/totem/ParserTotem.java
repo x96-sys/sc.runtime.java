@@ -5,6 +5,7 @@ import org.x96.sys.sc.ast.synthetic.Ethics;
 import org.x96.sys.sc.ast.synthetic.Primor;
 import org.x96.sys.sc.ast.synthetic.Totem;
 import org.x96.sys.sc.parser.Parser;
+import org.x96.sys.sc.parser.nymph.pupa.genome.anatomy.ethics.ParserEthics;
 import org.x96.sys.sc.parser.nymph.pupa.genome.behavior.pollinate.primor.ParserPrimor;
 
 import java.util.ArrayList;
@@ -33,6 +34,14 @@ public class ParserTotem extends Parser<Totem> {
             skipI();
             followTotemContent(primes, ethics);
         }
-
+        if (hasNextAnatomy()){
+            consume("init_anatomy");
+            skipI();
+            ethics.add(new ParserEthics(tape).parse());
+            skipI();
+            consume("fini_anatomy");
+            skipI();
+            followTotemContent(primes, ethics);
+        }
     }
 }

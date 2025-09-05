@@ -1,6 +1,7 @@
 package org.x96.sys.sc.emit.self.hive.egg.network.organelle.rune;
 
 import org.x96.sys.sc.emit.arch.Emit;
+import org.x96.sys.sc.emit.self.hive.egg.network.organelle.bee.pulse.EmitPulse;
 import org.x96.sys.sc.emit.self.hive.egg.network.stimulus.hipocampos.id.EmitId;
 import org.x96.sys.sc.ir.synthetic.Rune;
 
@@ -24,6 +25,10 @@ public class EmitRune extends Emit<Rune> {
                 .map(id -> " ".repeat(4) + new EmitId(id).toSC())
                 .collect(Collectors.joining(System.lineSeparator(), System.lineSeparator(), System.lineSeparator()));
 
-        return String.format(":totem %s%s;%n", totem, insignias);
+        String pulses = Arrays.stream(t.pulses())
+                .map(p -> " ".repeat(4) + new EmitPulse(p).toSC())
+                .collect(Collectors.joining(System.lineSeparator(), System.lineSeparator(), System.lineSeparator()));
+
+        return String.format(":totem %s%s%s;%n", totem, insignias, pulses);
     }
 }

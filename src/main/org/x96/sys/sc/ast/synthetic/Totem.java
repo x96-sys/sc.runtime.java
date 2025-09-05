@@ -8,5 +8,8 @@ public record Totem(Primor primor, Primor[] primes, Ethics[] ethics) implements 
         for (Primor p : primes) {
             p.prettyPrint(child);
         }
+        for (Ethics e : ethics) {
+            e.prettyPrint(child);
+        }
     }
 }
