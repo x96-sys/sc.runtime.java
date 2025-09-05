@@ -2,6 +2,7 @@ package org.x96.sys.sc.parser.nymph.pupa.genome.behavior;
 
 import org.x96.sys.parser.Tape;
 import org.x96.sys.sc.ast.synthetic.Behavior;
+import org.x96.sys.sc.ast.synthetic.Fly;
 import org.x96.sys.sc.ast.synthetic.Pollinate;
 import org.x96.sys.sc.parser.Parser;
 import org.x96.sys.sc.parser.nymph.pupa.genome.behavior.fly.ParserFly;
@@ -14,14 +15,15 @@ public class ParserBehavior extends Parser<Behavior> {
 
     @Override
     public Behavior parse() {
-        if (hasNextPollinate()) {
-            Pollinate pollinate = new ParserPollinate(tape).parse();
-            skipI();
-            return pollinate;
+        if (hasNextBehavior()) {
+            if (hasNextPollinate()) {
+                return new ParserPollinate(tape).parse();
+            } else if (hasNextFly()) {
+                return new ParserFly(tape).parse();
+            } else {
+                throw new RuntimeException("x");
+            }
         }
-        if (hasNextFly()){
-            return new ParserFly(tape).parse();
-        }
-        throw new RuntimeException("?");
+        throw new RuntimeException("y");
     }
 }

@@ -1,9 +1,13 @@
 package org.x96.sys.sc.parser.nymph.pupa.genome.anatomy.ethics.manifest;
 
 import org.x96.sys.parser.Tape;
+import org.x96.sys.sc.ast.synthetic.Behavior;
 import org.x96.sys.sc.ast.synthetic.Manifest;
 import org.x96.sys.sc.parser.Parser;
 import org.x96.sys.sc.parser.nymph.pupa.genome.behavior.ParserBehavior;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ParserManifest extends Parser<Manifest> {
     public ParserManifest(Tape tape) {
@@ -12,6 +16,16 @@ public class ParserManifest extends Parser<Manifest> {
 
     @Override
     public Manifest parse() {
-        return new Manifest(new ParserBehavior(tape).parse());
+        List<Behavior> behaviors = new ArrayList<>();
+        followBehavior(behaviors);
+        return new Manifest(behaviors.toArray(Behavior[]::new));
+    }
+
+    private void followBehavior(List<Behavior> behaviors) {
+        if (hasNextBehavior()) {
+            new ParserBehavior(tape).parse();
+            skipI();
+            followBehavior(behaviors);
+        }
     }
 }
