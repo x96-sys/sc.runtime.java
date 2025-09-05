@@ -15,9 +15,20 @@ public class EmitPulse extends Emit<Pulse> {
     public String toSC() {
         String id = new EmitId(t.id()).toSC();
         String schema = t.schema().map(s -> new EmitSchema(s).toSC()).orElse("");
-        String feedback = t.chemical().map(f -> new EmitChemical(f).toSC()).orElse("?");
+
         StringBuilder e = new StringBuilder();
-        e.append(String.format(":ethics %s%s%s;", id, schema, feedback));
+        e.append(String.format(":ethics %s%s", id, schema));
+        if (t.chemical().isEmpty()) {
+            e.append(";\n");
+        } else {
+            e.append("\n");
+            String chemical = new EmitChemical(t.chemical().get()).toSC();
+            e.append(" ".repeat(4));
+            e.append(" ".repeat(4));
+            e.append(chemical);
+            e.append("\n").append(" ".repeat(4));
+            e.append(";");
+        }
         return e.toString();
     }
 }

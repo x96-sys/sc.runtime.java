@@ -1,6 +1,7 @@
 package org.x96.sys.sc.emit.self.hive.egg.network.stimulus.hipocampos.signal.schema;
 
 import org.x96.sys.sc.emit.arch.Emit;
+import org.x96.sys.sc.emit.self.hive.egg.network.stimulus.hipocampos.signal.schema.flow.EmitFlow;
 import org.x96.sys.sc.emit.self.hive.egg.network.stimulus.hipocampos.signal.schema.neurotransmitter.EmitNeurotransmitter;
 import org.x96.sys.sc.ir.synthetic.Schema;
 import org.x96.sys.util.S;
@@ -21,6 +22,10 @@ public class EmitSchema extends Emit<Schema> {
             }
         }
         sb.append("}");
+        if (t.flow().isPresent()){
+            sb.append(" ");
+            sb.append(new EmitFlow(t.flow().get()).toSC());
+        }
         return sb.toString();
     }
 }

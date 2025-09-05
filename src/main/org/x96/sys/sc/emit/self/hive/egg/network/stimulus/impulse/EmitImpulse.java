@@ -13,9 +13,7 @@ public class EmitImpulse extends Emit<Impulse> {
     @Override
     public String toSC() {
         String neuron = new EmitNeuron(t.neuron()).toSC();
-        String nerve = t.nerve()
-                .map(n -> "." + new EmitNerve(n).toSC())
-                .orElse("");
+        String nerve = t.nerve().map(n -> new EmitNerve(n).toSC()).orElse("");
         return String.format("%s%s", neuron, nerve);
     }
 }

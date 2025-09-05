@@ -47,7 +47,7 @@ $1/$2: $1
 	fi
 endef
 
-build:
+build: clean/build/main
 	@echo "[☕️] [compiling] [`javac --version`]"
 	@javac -d $(MAIN_BUILD) -cp $(CP) $(JAVA_SOURCES)
 	@echo "[🦿] [compiled] [$(MAIN_BUILD)]"
@@ -66,3 +66,8 @@ $(eval $(call deps,$(LIB_DIR),cs_runtime,CS_RUNTIME))
 
 $(LIB_DIR):
 	@mkdir -p $@
+
+
+clean/build/main:
+	@rm -rf $(MAIN_BUILD)
+	@echo "[🧼] [clean] [$(MAIN_BUILD)]"
