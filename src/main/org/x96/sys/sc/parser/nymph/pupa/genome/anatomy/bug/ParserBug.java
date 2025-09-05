@@ -33,6 +33,7 @@ public class ParserBug extends Parser<Bug> {
             ethics.add(new ParserEthics(tape).parse());
             skipI();
             consume("fini_anatomy");
+            skipI();
             followBugAnatomy(ethics);
         }
     }
