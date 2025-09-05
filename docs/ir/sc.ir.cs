@@ -7,9 +7,9 @@ rune     = id;
 swarm    = id;
 connect  = id;
 
-pulse    = id schema? feedback?;
+pulse    = id schema? chemical?;
 
-feedback = stimulus;
+chemical = stimulus;
 
 schema  = neurotransmitter[]:neurotransmitters flow?;
 flow    = (id | life);

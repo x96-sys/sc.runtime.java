@@ -10,6 +10,6 @@ public class EmitNb16 extends Emit<Nb16> {
 
     @Override
     public String toSC() {
-        return String.format("%X", t.raw());
+        return String.format("0x%X", t.raw());
     }
 }
