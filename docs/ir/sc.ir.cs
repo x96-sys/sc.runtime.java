@@ -9,7 +9,7 @@ connect  = id;
 
 pulse    = id schema? chemical?;
 
-chemical = stimulus;
+chemical = stimulus[];
 
 schema  = neurotransmitter[]:neurotransmitters flow?;
 flow    = (id | life);

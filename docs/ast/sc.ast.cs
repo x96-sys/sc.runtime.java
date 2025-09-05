@@ -9,7 +9,7 @@ know   = primor;
 
 ethics = primor signature? manifest?;
 
-manifest = behavior;
+manifest = behavior[];
 
 signature = pair[]:pairs resonance?;
 resonance = (primor | ready);
