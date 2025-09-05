@@ -23,7 +23,7 @@ public class ParserManifest extends Parser<Manifest> {
 
     private void followBehavior(List<Behavior> behaviors) {
         if (hasNextBehavior()) {
-            new ParserBehavior(tape).parse();
+            behaviors.add(new ParserBehavior(tape).parse());
             skipI();
             followBehavior(behaviors);
         }
