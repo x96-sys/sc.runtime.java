@@ -1,9 +1,7 @@
 package org.x96.sys.sc.parser.nymph.pupa.genome.behavior.pollinate.nectar.hex;
 
-import org.x96.sys.cs.ast.book.passage.pattern.core.Hexadecimal;
-import org.x96.sys.cs.parser.book.passage.pattern.core.hexadecimal.ParserHexadecimal;
 import org.x96.sys.parser.Tape;
-import org.x96.sys.sc.ast.synthetic.Hex;
+import org.x96.sys.sc.ast.Hex;
 import org.x96.sys.sc.parser.Parser;
 
 public class ParserHex extends Parser<Hex> {

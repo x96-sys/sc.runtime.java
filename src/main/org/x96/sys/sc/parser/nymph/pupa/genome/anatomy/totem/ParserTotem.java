@@ -1,15 +1,16 @@
 package org.x96.sys.sc.parser.nymph.pupa.genome.anatomy.totem;
 
 import org.x96.sys.parser.Tape;
-import org.x96.sys.sc.ast.synthetic.Ethics;
-import org.x96.sys.sc.ast.synthetic.Primor;
-import org.x96.sys.sc.ast.synthetic.Totem;
+import org.x96.sys.sc.ast.*;
 import org.x96.sys.sc.parser.Parser;
 import org.x96.sys.sc.parser.nymph.pupa.genome.anatomy.ethics.ParserEthics;
+import org.x96.sys.sc.parser.nymph.pupa.genome.anatomy.totem.generalization.ParserOptionalGeneralization;
+import org.x96.sys.sc.parser.nymph.pupa.genome.anatomy.totem.norte.ParserNorte;
 import org.x96.sys.sc.parser.nymph.pupa.genome.behavior.pollinate.primor.ParserPrimor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class ParserTotem extends Parser<Totem> {
     public ParserTotem(Tape tape) {
@@ -22,26 +23,32 @@ public class ParserTotem extends Parser<Totem> {
         skipI();
         Primor primor = new ParserPrimor(tape).parse();
         skipI();
-        List<Primor> primes = new ArrayList<>();
+        Optional<Generalization> generalization = new ParserOptionalGeneralization(tape).parse();
+        skipI();
+        List<Norte> nortes = new ArrayList<>();
         List<Ethics> ethics = new ArrayList<>();
-        followTotemContent(primes, ethics);
-        return new Totem(primor, primes.toArray(Primor[]::new), ethics.toArray(Ethics[]::new));
+        followTotemContent(nortes, ethics);
+        return new Totem(
+                primor,
+                nortes.toArray(Norte[]::new),
+                ethics.toArray(Ethics[]::new),
+                generalization);
     }
 
-    private void followTotemContent(List<Primor> primes, List<Ethics> ethics) {
+    private void followTotemContent(List<Norte> nortes, List<Ethics> ethics) {
         if (hasNextPrimor()) {
-            primes.add(new ParserPrimor(tape).parse());
+            nortes.add(new ParserNorte(tape).parse());
             skipI();
-            followTotemContent(primes, ethics);
+            followTotemContent(nortes, ethics);
         }
-        if (hasNextAnatomy()){
+        if (hasNextAnatomy()) {
             consume("init_anatomy");
             skipI();
             ethics.add(new ParserEthics(tape).parse());
             skipI();
             consume("fini_anatomy");
             skipI();
-            followTotemContent(primes, ethics);
+            followTotemContent(nortes, ethics);
         }
     }
 }

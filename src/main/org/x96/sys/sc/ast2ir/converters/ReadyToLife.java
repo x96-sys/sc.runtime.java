@@ -1,8 +1,8 @@
 package org.x96.sys.sc.ast2ir.converters;
 
-import org.x96.sys.sc.ast.synthetic.Ready;
+import org.x96.sys.sc.ast.Ready;
 import org.x96.sys.sc.ast2ir.contracts.ToIr;
-import org.x96.sys.sc.ir.synthetic.Life;
+import org.x96.sys.sc.ir.Life;
 
 public class ReadyToLife implements ToIr<Ready, Life> {
     @Override

@@ -1,10 +1,10 @@
 package org.x96.sys.sc.ast2ir.converters;
 
-import org.x96.sys.sc.ast.synthetic.Behavior;
-import org.x96.sys.sc.ast.synthetic.Fly;
-import org.x96.sys.sc.ast.synthetic.Pollinate;
+import org.x96.sys.sc.ast.Behavior;
+import org.x96.sys.sc.ast.Fly;
+import org.x96.sys.sc.ast.Pollinate;
 import org.x96.sys.sc.ast2ir.contracts.ToIr;
-import org.x96.sys.sc.ir.synthetic.Stimulus;
+import org.x96.sys.sc.ir.Stimulus;
 
 public class BehaviorToStimulus implements ToIr<Behavior, Stimulus> {
     @Override

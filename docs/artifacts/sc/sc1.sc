@@ -16,7 +16,7 @@ kernel.print('%s, %s!', 'hello', 'world')
 :ethics c{a: []Hex, *a: []Hex};
 
 :ethics c{*:[]Hex};
-:ethics c{*:?Hex, *:?Hex} 0x0
+:ethics c{*:?Hex, *:?Hex} !0
   kernel.print('%s, %s!', 'hello', 'world')
 ;
 
@@ -24,7 +24,7 @@ kernel.print('%s, %s!', 'hello', 'world')
 :bug b
   :ethics c{*:[]Hex};
   :ethics c{*:[]Hex};
-  :ethics c{*:?Hex, *:?Hex} 0x0
+  :ethics c{*:?Hex, *:?Hex} !0
     kernel.print('%s, %s!', 'hello', 'world')
   ;
 ;

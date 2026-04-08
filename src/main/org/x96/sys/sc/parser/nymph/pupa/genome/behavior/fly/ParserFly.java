@@ -1,9 +1,9 @@
 package org.x96.sys.sc.parser.nymph.pupa.genome.behavior.fly;
 
 import org.x96.sys.parser.Tape;
-import org.x96.sys.sc.ast.synthetic.Course;
-import org.x96.sys.sc.ast.synthetic.Fly;
-import org.x96.sys.sc.ast.synthetic.Forager;
+import org.x96.sys.sc.ast.Course;
+import org.x96.sys.sc.ast.Fly;
+import org.x96.sys.sc.ast.Forager;
 import org.x96.sys.sc.parser.Parser;
 import org.x96.sys.sc.parser.nymph.pupa.genome.behavior.fly.course.ParserOptionalCourse;
 import org.x96.sys.sc.parser.nymph.pupa.genome.behavior.fly.forager.ParserForager;
@@ -18,9 +18,7 @@ public class ParserFly extends Parser<Fly> {
     @Override
     public Fly parse() {
         Forager forager = new ParserForager(tape).parse();
-        skipI();
         Optional<Course> course = new ParserOptionalCourse(tape).parse();
-        skipI();
         return new Fly(forager, course);
     }
 }

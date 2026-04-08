@@ -1,7 +1,7 @@
 package org.x96.sys.sc.parser.nymph.pupa.genome.behavior.pollinate.primor;
 
 import org.x96.sys.parser.Tape;
-import org.x96.sys.sc.ast.synthetic.Primor;
+import org.x96.sys.sc.ast.Primor;
 import org.x96.sys.sc.parser.Parser;
 
 import java.io.ByteArrayOutputStream;

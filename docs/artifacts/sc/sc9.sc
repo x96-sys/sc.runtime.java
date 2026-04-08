@@ -2,57 +2,67 @@
 @hello    = 'hello';
 @world    = 'world';
 
-:bug kernel
-  :ethics wf{template: Echo, args: []Echo } 0x0
-    flow(0x0)
-  ;
+:skill imprint
+  :ethics printf{template: Echo, *args: []Echo} !Hex;
+  :ethics print{ech: Echo} !Hex;
+;
 
-  :ethics wf{template: Echo, args: []Echo } 0x0
-    sys.wf(template, args)
-    sys.wf(template, args)
-    sys.wf(template, args)
-    flow(0x0)
-  ;
+:skill exec
+  :ethics exit{code: Hex} !0;
+;
+
+:bug kernel
+    :as sys;
+;
+
+:totem bool
+    true
+    false
+;
+
+:totem volume
+    empty
+    full
+    l{:Hex}
+    m3{:Hex}
+    g{:Hex}
+;
+
+:bug buzz
+    :gene code Hex;
+    :gene buzz Hex;
+    :gene explain Echo;
+    :gene cause ?buzz;
+;
+
+
+
+:totem flow<G>
+    ok{:G}
+    err{:buzz}
+;
+
+
+
+:bug math
+    :ethics div{dividend:Hex, divisor:Hex} !Hex;
 ;
 
 :bug sys
-  :ethics wf{template: Echo, *args: []Echo} n32
-    flow($.printf(template, args))
+  :can imprint;
+  :can exec;
+
+  :ethics echo{template: Echo, *args?: []Echo} !Hex
+      if args.ready
+          flow($.print(template))
+      else
+          flow($.printf(template, args))
+      fi
   ;
-  :ethics fly{code: Hex} 0x0
-    $.exit(code)
+
+  :ethics fly{:Hex} !Hex
+      $.exit(hex)
   ;
 ;
 
-
-:totem kind
-  unknow
-  soh
-  null
-  stx
-  etx
-
-  :ethics is{:Hex} $
-    flow(unknow) if isUnknow(hex)
-    flow(null) if isNull(hex)
-    flow(soh) if isSoh(hex)
-    flow(stx) if isStx(hex)
-    flow(etx) if isEtx(hex)
-  ;
-
-  :ethics isNull{:Hex} bool
-    hex.eq(0x0)
-  ;
-  :ethics isSoh{:Hex} bool
-    hex.eq(0x1)
-  ;
-  :ethics isStx{:Hex} bool
-    hex.eq(0x2)
-  ;
-  :ethics isEtx{:Hex} bool
-    hex.eq(0x3)
-  ;
-  :ethics isUnknow{:Hex} bool
-    hex.gt(0x3)
-  ;
-;
+# kernel.echo(template, [hello, world])

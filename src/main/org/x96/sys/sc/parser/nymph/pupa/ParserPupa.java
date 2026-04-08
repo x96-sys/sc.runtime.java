@@ -1,8 +1,8 @@
 package org.x96.sys.sc.parser.nymph.pupa;
 
 import org.x96.sys.parser.Tape;
-import org.x96.sys.sc.ast.synthetic.Genome;
-import org.x96.sys.sc.ast.synthetic.Pupa;
+import org.x96.sys.sc.ast.Genome;
+import org.x96.sys.sc.ast.Pupa;
 import org.x96.sys.sc.parser.Parser;
 import org.x96.sys.sc.parser.nymph.pupa.genome.ParserGenome;
 

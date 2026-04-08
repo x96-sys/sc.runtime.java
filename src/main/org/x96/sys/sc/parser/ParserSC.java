@@ -1,8 +1,8 @@
 package org.x96.sys.sc.parser;
 
 import org.x96.sys.parser.Tape;
-import org.x96.sys.sc.ast.synthetic.Nymph;
-import org.x96.sys.sc.ast.synthetic.Sc;
+import org.x96.sys.sc.ast.Nymph;
+import org.x96.sys.sc.ast.Sc;
 import org.x96.sys.sc.parser.nymph.ParserNymph;
 
 public class ParserSC extends Parser<Sc> {
@@ -15,9 +15,7 @@ public class ParserSC extends Parser<Sc> {
     public Sc parse() {
         consume("stx");
         Nymph nymph = new ParserNymph(tape).parse();
-        System.out.println(tape.current());
         consume("etx");
         return new Sc(nymph);
     }
-
 }

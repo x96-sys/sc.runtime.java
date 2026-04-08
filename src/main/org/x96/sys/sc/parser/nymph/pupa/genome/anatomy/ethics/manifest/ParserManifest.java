@@ -1,8 +1,8 @@
 package org.x96.sys.sc.parser.nymph.pupa.genome.anatomy.ethics.manifest;
 
 import org.x96.sys.parser.Tape;
-import org.x96.sys.sc.ast.synthetic.Behavior;
-import org.x96.sys.sc.ast.synthetic.Manifest;
+import org.x96.sys.sc.ast.Behavior;
+import org.x96.sys.sc.ast.Manifest;
 import org.x96.sys.sc.parser.Parser;
 import org.x96.sys.sc.parser.nymph.pupa.genome.behavior.ParserBehavior;
 

@@ -33,7 +33,7 @@ kernel.bake(:bug, @bug_name, @bug_attr);
 
 ## Usage is independent of build
 
-@bee = Bee (
+@bee = Bee {
   health: 0xFF;
   stamina: 0xFF;
   mana: 0xFF;
@@ -42,7 +42,7 @@ kernel.bake(:bug, @bug_name, @bug_attr);
   level: 0x0;
   dexterity: 0x10;
   empathy: 0x80;
-);
+};
 
 kernel.printf('Bee health [%s]%n', bee.health);
 kernel.printf('Bee stamina [%s]%n', bee.stamina);

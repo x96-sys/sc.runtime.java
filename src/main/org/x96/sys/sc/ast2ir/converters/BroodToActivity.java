@@ -1,9 +1,9 @@
 package org.x96.sys.sc.ast2ir.converters;
 
-import org.x96.sys.sc.ast.synthetic.Brood;
+import org.x96.sys.sc.ast.Brood;
 import org.x96.sys.sc.ast2ir.contracts.ToIr;
-import org.x96.sys.sc.ir.synthetic.Activity;
-import org.x96.sys.sc.ir.synthetic.Signal;
+import org.x96.sys.sc.ir.Activity;
+import org.x96.sys.sc.ir.Signal;
 
 public class BroodToActivity implements ToIr<Brood, Activity> {
     @Override

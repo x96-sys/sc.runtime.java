@@ -1,0 +1,46 @@
+@startuml
+
+!define VERSION "0.1.2"
+
+package org.x96.sys {
+  struct Hex {
+    + raw: hex
+  }
+  struct Echo {
+    + raw: echo
+  }
+
+  struct Buzz {
+    + code: Hex
+    + name: Echo
+    + secret: Echo
+    + brief: ?Buzz
+  }
+  Buzz --> Hex
+  Buzz --> Echo
+  Buzz --> Buzz
+
+  enum bool {
+    true
+    false
+  }
+
+  enum Flow<R> {
+    Flow(R)
+    Buzz(Buzz)
+  }
+  Flow --> Buzz
+
+  enum Ready {
+    Ready
+  }
+
+  interface sys {
+    + echo(echo: Echo): Hex
+    + fecho(template: Echo, args*: Echo): Hex
+    + fly(code: Hex)
+    + sheep(ms: Hex)
+  }
+}
+
+@enduml

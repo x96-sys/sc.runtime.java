@@ -1,8 +1,8 @@
 package org.x96.sys.sc.parser.nymph.pupa.genome.behavior.fly.course.carrier.brood;
 
 import org.x96.sys.parser.Tape;
-import org.x96.sys.sc.ast.synthetic.Brood;
-import org.x96.sys.sc.ast.synthetic.Nectar;
+import org.x96.sys.sc.ast.Brood;
+import org.x96.sys.sc.ast.Nectar;
 import org.x96.sys.sc.parser.Parser;
 import org.x96.sys.sc.parser.nymph.pupa.genome.behavior.pollinate.nectar.ParserNectar;
 

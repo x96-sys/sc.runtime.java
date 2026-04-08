@@ -1,15 +1,14 @@
 package org.x96.sys.sc.parser.nymph.pupa.genome.anatomy.bug;
 
 import org.x96.sys.parser.Tape;
-import org.x96.sys.sc.ast.synthetic.Bug;
-import org.x96.sys.sc.ast.synthetic.Ethics;
-import org.x96.sys.sc.ast.synthetic.Primor;
+import org.x96.sys.sc.ast.*;
 import org.x96.sys.sc.parser.Parser;
-import org.x96.sys.sc.parser.nymph.pupa.genome.anatomy.ethics.ParserEthics;
+import org.x96.sys.sc.parser.nymph.pupa.genome.anatomy.totem.generalization.ParserOptionalGeneralization;
 import org.x96.sys.sc.parser.nymph.pupa.genome.behavior.pollinate.primor.ParserPrimor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class ParserBug extends Parser<Bug> {
     public ParserBug(Tape tape) {
@@ -22,19 +21,19 @@ public class ParserBug extends Parser<Bug> {
         skipI();
         Primor primor = new ParserPrimor(tape).parse();
         skipI();
+        Optional<Generalization> generalization = new ParserOptionalGeneralization(tape).parse();
+        skipI();
         List<Ethics> ethics = new ArrayList<>();
-        followBugAnatomy(ethics);
-        return new Bug(primor, ethics.toArray(Ethics[]::new));
-    }
-
-    private void followBugAnatomy(List<Ethics> ethics) {
-        if (hasNext("init_anatomy")) {
-            consume("init_anatomy");
-            ethics.add(new ParserEthics(tape).parse());
-            skipI();
-            consume("fini_anatomy");
-            skipI();
-            followBugAnatomy(ethics);
-        }
+        List<Can> can = new ArrayList<>();
+        List<As> as = new ArrayList<>();
+        List<Gene> genes = new ArrayList<>();
+        followBugAnatomy(ethics, can, as, genes);
+        return new Bug(
+                primor,
+                genes.toArray(Gene[]::new),
+                ethics.toArray(Ethics[]::new),
+                can.toArray(Can[]::new),
+                as.toArray(As[]::new),
+                generalization);
     }
 }

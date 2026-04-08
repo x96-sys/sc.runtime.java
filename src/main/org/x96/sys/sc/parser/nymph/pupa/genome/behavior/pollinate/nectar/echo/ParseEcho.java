@@ -1,7 +1,7 @@
 package org.x96.sys.sc.parser.nymph.pupa.genome.behavior.pollinate.nectar.echo;
 
 import org.x96.sys.parser.Tape;
-import org.x96.sys.sc.ast.synthetic.Echo;
+import org.x96.sys.sc.ast.Echo;
 import org.x96.sys.sc.parser.Parser;
 
 import java.io.ByteArrayOutputStream;
@@ -27,6 +27,5 @@ public class ParseEcho extends Parser<Echo> {
                 followEcho(out);
             }
         }
-
     }
 }

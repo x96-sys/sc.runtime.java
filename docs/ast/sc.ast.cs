@@ -2,44 +2,65 @@ primor = byte[]:raw;
 echo   = byte[]:raw;
 hex    = int:raw
 
-bug    = primor ethics[];
-totem  = primor;
+skill  = primor ethics[];
+bug    = primor gene[] ethics[] can[] as[] generalization?;
+totem  = primor generalization?;
 logos  = primor;
 know   = primor;
+can    = primor;
+as     = primor;
 
-ethics = primor signature? manifest?;
+tie            = (can | as);
+abstraction    = primor tie?;
+generalization = abstraction[];
+
+gene     = pair;
+
+ethics   = primor signature? resonance? manifest?;
+
+norte    = primor signature?;
 
 manifest = behavior[];
 
-signature = pair[]:pairs resonance?;
+aura     = signature resonance?;
+
+signature = pair[]:pairs;
 resonance = (primor | ready);
 ready     = bool:state;
 
-pair        = attribute? typo;
+mod         = {array | optional | splat};
+pair        = mod[]:mods attribute? typo;
 
-attribute     = bool?:splat primor?;
+nucleotide  = primor fly;
+happens     = nucleotide[]:nucleotides;
 
-typo     = mod_typo? primor;
-mod_typo = {array | optional};
+attribute   = primor?;
 
-anatomy     = (bug | totem | logos | know | ethics);
+typo        = primor;
+
+anatomy     = (bug | totem | logos | know | ethics | skill);
 
 flower = {variable | constant};
 
 pollinate = flower primor nectar?;
 
-filament = primor[];
+base = { echo | primor | norte }
+filament = base rna;
 
-forager = primor;
+rna = (echo | primor | norte);
 
-nectar  = (filament | fly | echo | primor | signature | hex);
+ipse = ;
+
+forager = (primor | ipse | echo | hex);
+
+nectar  = (filament | fly | aura | brood);
 
 brood = nectar[];
 
 catalysis = primor course?;
 carrier   = brood? course?;
 
-course  = (catalysis | carrier);
+course  = (catalysis | carrier | happens);
 fly     = forager course?;
 
 behavior = (pollinate | fly);

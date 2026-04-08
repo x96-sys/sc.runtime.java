@@ -1,10 +1,9 @@
 package org.x96.sys.sc.ast2ir.converters;
 
-import org.x96.sys.sc.ast.synthetic.Pupa;
+import org.x96.sys.sc.ast.Pupa;
 import org.x96.sys.sc.ast2ir.contracts.ToIr;
-import org.x96.sys.sc.ir.synthetic.Bee;
-import org.x96.sys.sc.ir.synthetic.Egg;
-import org.x96.sys.sc.ir.synthetic.Network;
+import org.x96.sys.sc.ir.Egg;
+import org.x96.sys.sc.ir.Network;
 
 public class PupaToEgg implements ToIr<Pupa, Egg> {
     @Override

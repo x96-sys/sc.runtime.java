@@ -2,44 +2,65 @@ id    = byte[]:raw;
 text  = byte[]:raw;
 nb16  = int:raw;
 
-bee      = id pulse[];
-rune     = id;
+habit    = id pulse[];
+bee      = id dendrite[] pulse[] able[] be[] bundle?;
+rune     = id bundle?;
 swarm    = id;
 connect  = id;
+able     = id;
+be       = id;
 
-pulse    = id schema? chemical?;
+bond   = (able | be);
+packet = id bond?;
+bundle = packet[];
 
-chemical = stimulus[];
+dendrite  = neurotransmitter;
 
-schema  = neurotransmitter[]:neurotransmitters flow?;
+pulse     = id schema? flow? chemical?;
+
+direction = id schema?;
+
+chemical  = stimulus[];
+
+wave      = schema flow?;
+
+schema  = neurotransmitter[]:neurotransmitters;
 flow    = (id | life);
 life    = bool:state;
 
-neurotransmitter = aminoacid? isoform;
+formula          = {array | optional | splat};
+neurotransmitter = formula[]:formulas aminoacid? isoform;
 
-aminoacid = bool?:splat id?;
+spore   = id impulse;
+genesis = spore[]:spores;
 
-isoform = formula? id;
-formula = {array | optional};
+aminoacid = id?;
 
-organelle = (bee | rune | swarm | connect | pulse);
+isoform = id;
+
+organelle = (bee | rune | swarm | connect | pulse | habit);
 
 nature = { mutable | static };
 
 hipocampos = nature id signal?;
 
-serie = id[];
+axoneme = { text | id | direction }
+serie = axoneme serial[];
 
-neuron = id;
+serial = (text | id | direction)
 
-signal = (serie | impulse | text | id | schema | nb16);
+endo = ;
+
+neuron = ( id | endo | text | nb16);
+
+signal = (serie | impulse | wave | activity);
 
 activity = signal[];
 
 synaptic     = id nerve?;
 transmission = activity? nerve?;
 
-nerve   = (synaptic | transmission);
+nerve   = (synaptic | transmission | genesis);
 impulse = neuron nerve?;
 
 stimulus = (hipocampos | impulse);

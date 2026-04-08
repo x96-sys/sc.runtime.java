@@ -1,8 +1,8 @@
 package org.x96.sys.sc.ast2ir.converters;
 
-import org.x96.sys.sc.ast.synthetic.Nymph;
+import org.x96.sys.sc.ast.Nymph;
 import org.x96.sys.sc.ast2ir.contracts.ToIr;
-import org.x96.sys.sc.ir.synthetic.Hive;
+import org.x96.sys.sc.ir.Hive;
 
 public class NymphToHive implements ToIr<Nymph, Hive> {
     @Override

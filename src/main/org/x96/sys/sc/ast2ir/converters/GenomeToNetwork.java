@@ -1,10 +1,10 @@
 package org.x96.sys.sc.ast2ir.converters;
 
-import org.x96.sys.sc.ast.synthetic.Anatomy;
-import org.x96.sys.sc.ast.synthetic.Behavior;
-import org.x96.sys.sc.ast.synthetic.Genome;
+import org.x96.sys.sc.ast.Anatomy;
+import org.x96.sys.sc.ast.Behavior;
+import org.x96.sys.sc.ast.Genome;
 import org.x96.sys.sc.ast2ir.contracts.ToIr;
-import org.x96.sys.sc.ir.synthetic.Network;
+import org.x96.sys.sc.ir.Network;
 
 public class GenomeToNetwork implements ToIr<Genome, Network> {
     @Override

@@ -1,8 +1,8 @@
 package org.x96.sys.sc.ast2ir.converters;
 
-import org.x96.sys.sc.ast.synthetic.*;
+import org.x96.sys.sc.ast.*;
 import org.x96.sys.sc.ast2ir.contracts.ToIr;
-import org.x96.sys.sc.ir.synthetic.Organelle;
+import org.x96.sys.sc.ir.Organelle;
 
 public class AnatomyToOrganelle implements ToIr<Anatomy, Organelle> {
     @Override
@@ -13,6 +13,7 @@ public class AnatomyToOrganelle implements ToIr<Anatomy, Organelle> {
             case Know know -> new KnowToConnect().convert(know);
             case Logos logos -> new LogosToSwarm().convert(logos);
             case Totem totem -> new TotemToRune().convert(totem);
+            case Skill skill -> new SkillToHabit().convert(skill);
         };
     }
 }

@@ -1,9 +1,7 @@
 package org.x96.sys.sc.parser.nymph.pupa.genome.behavior;
 
 import org.x96.sys.parser.Tape;
-import org.x96.sys.sc.ast.synthetic.Behavior;
-import org.x96.sys.sc.ast.synthetic.Fly;
-import org.x96.sys.sc.ast.synthetic.Pollinate;
+import org.x96.sys.sc.ast.Behavior;
 import org.x96.sys.sc.parser.Parser;
 import org.x96.sys.sc.parser.nymph.pupa.genome.behavior.fly.ParserFly;
 import org.x96.sys.sc.parser.nymph.pupa.genome.behavior.pollinate.ParserPollinate;

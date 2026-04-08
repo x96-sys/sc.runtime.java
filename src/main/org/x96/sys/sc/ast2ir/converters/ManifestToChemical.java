@@ -1,13 +1,9 @@
 package org.x96.sys.sc.ast2ir.converters;
 
-import org.x96.sys.sc.ast.synthetic.Behavior;
-import org.x96.sys.sc.ast.synthetic.Manifest;
+import org.x96.sys.sc.ast.Manifest;
 import org.x96.sys.sc.ast2ir.contracts.ToIr;
-import org.x96.sys.sc.ir.synthetic.Chemical;
-import org.x96.sys.sc.ir.synthetic.Stimulus;
-
-import java.util.ArrayList;
-import java.util.List;
+import org.x96.sys.sc.ir.Chemical;
+import org.x96.sys.sc.ir.Stimulus;
 
 public class ManifestToChemical implements ToIr<Manifest, Chemical> {
     @Override

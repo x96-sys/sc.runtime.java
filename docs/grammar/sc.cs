@@ -21,8 +21,25 @@ fini_anatomy = ';';
 init_signature = '{';
 fini_signature = '}';
 
+init_happens = '{';
+fini_happens = '}';
+
+init_generalization = '<';
+fini_generalization = '>';
+
+init_array = '[';
+fini_array = ']';
+
+init_carrier = '(';
+fini_carrier = ')';
+
 space = 0x20;
 nl    = 0xA;
+
+fini_doc   = @ nl;
+init_doc   = hash;
+doc_follow = !fini_doc any;
+doc        = @ init_doc doc_follow* fini_doc;
 
 i          = @ ( space | 0x9 | 0xD | nl | doc );
 
@@ -38,72 +55,97 @@ primor_literal = ':' primor;
 bug_follow     = bug_anatomy i*;
 totem_follow   = (norte | bug_anatomy) i*;
 
-bug    = 'b' 'ug' i* primor i* bug_follow*;
-totem  = 't' 'otem' i* primor i* totem_follow*;
-logos  = 'l' 'ogos' i* primor;
-know   = 'k' 'now' i* primor;
-ethics = 'e' 'thics' i* primor i* signature i* manifest*;
+tie                = (can | as);
+abstraction        = primor i* tie?;
+abstraction_follow = ',' i* abstraction i*;
+
+generalization_follow = abstraction i* abstraction_follow*;
+generalization        = init_generalization i* generalization_follow fini_generalization;
+
+bug    = 'b' 'ug'    i* primor i* generalization? i* bug_follow*;
+totem  = 't' 'otem'  i* primor i* generalization? i* totem_follow*;
+logos  = 'l' 'ogos'  i* web;
+know   = 'k' 'now'   i* web;
+ethics = 'e' 'thics' i* primor i* signature? i* resonance? i* manifest*;
+
+web        = primor web_follow*;
+web_follow = '.' primor;
+
+skill_follow = skill_anatomy i*;
+skill        = 's' 'kill' i* primor i* skill_follow*;
+
+gene = 'g' 'ene' i* smf* i* primor i* smf* i* primor i* smf*;
+
+can  = 'c' 'an' i* primor;
+
+as   = 'a' 's' i* primor;
 
 manifest = behavior i*;
 
-signature = sigin i* resonance?;
-sigin     = init_signature i* pairs? i* fini_signature;
-resonance = (primor | void);
-void      = @ '0' ('x' | 'X') '0';
+aura = signature i* resonance?;
+
+signature = init_signature i* pairs? i* fini_signature;
+resonance = '!' i* (primor | void | generalization);
+void      = @ zero ;
 
 pairs       = pair pair_follow*;
 pair        = attribute? i* typo;
 pair_follow = ',' i* pair i*;
 
-attribute     = mod_attribute? i* primor?;
-mod_attribute = splat;
-splat         = '*';
+nucleotides_follow = ',' i* nucleotide i*;
+nucleotide         = primor i* ':' i* fly i*;
+helix              = nucleotide nucleotides_follow*;
 
-typo     = ':' i* mod_typo? i* primor;
-mod_typo = (array | optional);
-array    = '[' ']';
 optional = '?';
+array    = init_array i* fini_array;
+splat    = '*';
+mod_sig  = (splat | array | optional);
+smf      = mod_sig i*;
 
-anatomy     = init_anatomy i* (bug | totem | logos | know | ethics) i* fini_anatomy;
-bug_anatomy = init_anatomy i* ethics i* fini_anatomy;
+attribute  = smf* i* primor? i* smf*;
+typo       = ':' i* smf* i* primor i* smf*;
+
+anatomy       = init_anatomy i* (bug | totem | logos | know | ethics | skill) i* fini_anatomy;
+bug_anatomy   = init_anatomy i* (ethics | can | as | gene) i* fini_anatomy;
+totem_anatomy = init_anatomy i* (ethics | can ) i* fini_anatomy;
+skill_anatomy = init_anatomy i* ethics i* fini_anatomy;
 
 flower = @ ('@' | '%') i*;
 
 pollinate      = flower primor i* '=' i* nectar i* fini_pollinate;
 fini_pollinate = ';';
 
-norte = primor;
-norte_follow = i* norte?;
+norte = primor signature?;
+norte_follow = norte i*;
 
-filament = '&' 'p' '[' norte_follow+ ']';
+lpf = primor i*;
+lp  = 'p' i* init_array i* lpf*;
 
-self = '$';
-forager = (primor | self);
+lef = echo i*;
+le  = 'e' i* init_array i* lpf*;
+
+ln  =  'n' i* init_array i*  norte_follow*;
+axon     = (lp | le | ln);
+filament = '&' i* axon fini_array;
+
+ipse = '$';
+forager = (primor | ipse | hex | echo);
 
 word = !q any;
 echo = @ q word+ q;
 
-fini_doc   = @ nl;
-doc        = @ hash doc_follow* fini_doc;
-doc_follow = !fini_doc any*;
-
-init_array = '[';
-fini_array = ']';
-
 nectar_array  = init_array i* brood fini_array;
 
-nectar        = (filament | fly | echo | primor_literal | signature | hex | nectar_array);
+nectar        = (filament | fly | primor_literal | aura  | nectar_array);
 nectar_follow = ',' i* nectar i*;
 
 brood = nectar i* nectar_follow*;
 
-init_carrier = '(';
-fini_carrier = ')';
-
 catalysis = '.' i* primor course?;
 carrier   = init_carrier i* brood? fini_carrier course?;
+happens   = init_happens i* helix? fini_happens course?;
 
-course  = (catalysis | carrier);
+course  = (catalysis | carrier | happens);
 fly     = forager course?;
 
 behavior = (pollinate | fly);

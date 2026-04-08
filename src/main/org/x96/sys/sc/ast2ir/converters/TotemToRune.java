@@ -1,22 +1,32 @@
 package org.x96.sys.sc.ast2ir.converters;
 
-import org.x96.sys.sc.ast.synthetic.Totem;
+import org.x96.sys.sc.ast.Totem;
 import org.x96.sys.sc.ast2ir.contracts.ToIr;
-import org.x96.sys.sc.ir.synthetic.Id;
-import org.x96.sys.sc.ir.synthetic.Pulse;
-import org.x96.sys.sc.ir.synthetic.Rune;
+import org.x96.sys.sc.ir.Bundle;
+import org.x96.sys.sc.ir.Direction;
+import org.x96.sys.sc.ir.Pulse;
+import org.x96.sys.sc.ir.Rune;
+
+import java.util.Optional;
 
 public class TotemToRune implements ToIr<Totem, Rune> {
     @Override
     public Rune convert(Totem totem) {
-        Id[] insignias = new Id[totem.primes().length];
-        for (int i = 0; i < totem.primes().length; i++) {
-            insignias[i] = new PrimorToId().convert(totem.primes()[i]);
+        Direction[] directions = new Direction[totem.nortes().length];
+        for (int i = 0; i < totem.nortes().length; i++) {
+            directions[i] = new NorteToDirection().convert(totem.nortes()[i]);
         }
         Pulse[] pulses = new Pulse[totem.ethics().length];
         for (int i = 0; i < totem.ethics().length; i++) {
             pulses[i] = new EthicsToPulse().convert(totem.ethics()[i]);
         }
-        return new Rune(new PrimorToId().convert(totem.primor()), insignias, pulses);
+
+        Optional<Bundle> bundle = Optional.empty();
+        if (totem.generalization().isPresent()) {
+            bundle =
+                    Optional.of(new GeneralizationToBundle().convert(totem.generalization().get()));
+        }
+
+        return new Rune(new PrimorToId().convert(totem.primor()), directions, pulses, bundle);
     }
 }

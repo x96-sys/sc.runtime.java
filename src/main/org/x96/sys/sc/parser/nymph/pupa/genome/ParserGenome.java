@@ -1,7 +1,7 @@
 package org.x96.sys.sc.parser.nymph.pupa.genome;
 
 import org.x96.sys.parser.Tape;
-import org.x96.sys.sc.ast.synthetic.Genome;
+import org.x96.sys.sc.ast.Genome;
 import org.x96.sys.sc.parser.Parser;
 import org.x96.sys.sc.parser.nymph.pupa.genome.anatomy.ParserAnatomy;
 import org.x96.sys.sc.parser.nymph.pupa.genome.behavior.ParserBehavior;

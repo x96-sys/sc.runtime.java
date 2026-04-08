@@ -1,0 +1,56 @@
+@startuml
+
+!define VERSION "0.1.2"
+
+package org.x96.sys.sc.ir {
+  class Tree {
+    + hive: Hive
+  }
+  interface Neuron { }
+  class Id implements Flow, Serial, Neuron  { }
+  class Specimen {
+    + id: Id
+    + neuron: Neuron
+  }
+}
+
+package org.x96.sys.sc.ecology {
+  class EcoSys {
+    + biosphere: Biosphere
+    + buffTree: Tree
+
+    + rise(sunshine: Id)
+  }
+  package biosphere {
+    class Biosphere {
+      + dawning: Id
+      + biomes: HashMap<Id, Biome>;
+    }
+    package biome {
+      class Biome {
+        + bioName: Id
+        + organisms HashMap<Id, Organelle>
+        + chronicle: Sanctuary
+      }
+
+      package sanctuary {
+        class Sanctuary {
+          + specimens: List<Specimen>
+          + imortals: List<Specimen>
+          + phenotypes: List<Phenotype>
+
+          + Sanctuary(habitat: Biome)
+        }
+
+        class Phenotype {
+          + specimen: Specimen
+          + dendrite: Dendrite
+          + polymorphic: Object
+        }
+      }
+    }
+  }
+}
+' org.x96.sys.sc.ecology.EcoSys --> org.x96.sys.sc.ir.Tree
+
+@enduml
