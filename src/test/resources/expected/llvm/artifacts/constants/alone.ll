@@ -1,0 +1,1 @@
+@VERSION = constant [6 x i8] c"0.1.2\00"

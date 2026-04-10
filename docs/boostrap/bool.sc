@@ -1,0 +1,4 @@
+:totem bool
+  true
+  false
+;

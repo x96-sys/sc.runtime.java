@@ -1,0 +1,1 @@
+public final static String VERSION = "0.1.2";
